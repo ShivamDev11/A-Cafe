@@ -110,6 +110,8 @@
 .dark-eyebrow { color: #81715f; }
 .eyebrow-line { width: 28px; height: 1px; background: currentColor; }
 .hero-title { max-width: 900px; margin: 37px 0 60px; font: 400 clamp(76px, 10vw, 150px)/.89 var(--display); letter-spacing: -.065em; }
+.hero-title, .intro-title, .section-title, .closing-title, .reservation-dialog h2, .menu-item h3 { text-shadow: 0 1px 0 color-mix(in srgb, currentColor 66%, #1b120d), 0 2px 0 color-mix(in srgb, currentColor 48%, #1b120d), 0 3px 0 color-mix(in srgb, currentColor 32%, #1b120d), 0 9px 16px rgb(0 0 0 / 16%); transition: transform .35s ease, text-shadow .35s ease; }
+.hero-title:hover, .intro-title:hover, .section-title:hover, .closing-title:hover, .reservation-dialog h2:hover, .menu-item:hover h3 { transform: translate3d(0, -2px, 0); text-shadow: 0 1px 0 color-mix(in srgb, currentColor 66%, #1b120d), 0 3px 0 color-mix(in srgb, currentColor 48%, #1b120d), 0 5px 0 color-mix(in srgb, currentColor 32%, #1b120d), 0 13px 18px rgb(0 0 0 / 20%); }
 .hero-title em, .section-title em, .intro-title em, .closing-title em, .reservation-dialog h2 em { color: var(--gold); font-weight: 400; }
 .hero-title em { padding-left: clamp(25px, 8vw, 124px); }
 .hero-bottom { max-width: 1120px; }
