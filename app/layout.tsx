@@ -3,14 +3,14 @@ import type { Metadata, Viewport } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "BREW & BEYOND — Coffee, Considered",
-  description: "Thoughtfully sourced coffee, made slowly. Find your corner at BREW & BEYOND, a neighborhood coffee house in Brooklyn, NY.",
+  title: "BREW & BEYOND — More Than Coffee. It’s an Experience.",
+  description: "Discover BREW & BEYOND: exceptional coffee, a considered ritual, and a little room to stay awhile in Williamsburg, Brooklyn.",
   applicationName: "BREW & BEYOND",
   icons: { icon: "/icon.svg" },
 }
 
 export const viewport: Viewport = {
-  themeColor: "#1b120d",
+  themeColor: "#160D09",
   width: "device-width",
   initialScale: 1,
 }
