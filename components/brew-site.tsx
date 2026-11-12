@@ -5,7 +5,6 @@ import { useEffect, useRef, useState, type FormEvent } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
-import { CoffeeScene } from "@/components/coffee-scene"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -113,11 +112,10 @@ export function BrewSite() {
 
       <main id="top">
         <section className="lux-hero" aria-labelledby="hero-heading">
-          <div className="lux-hero__backdrop" />
+          <div className="lux-hero__photo" aria-hidden="true">
+            <Image src="/images/brew-hero.png" alt="" fill priority sizes="100vw" />
+          </div>
           <div className="lux-hero__grain" />
-          <CoffeeScene className="lux-hero__scene" />
-          <div className="lux-hero__glow lux-hero__glow--one" />
-          <div className="lux-hero__glow lux-hero__glow--two" />
           <div className="lux-hero__content">
             <p className="eyebrow" data-hero-intro><span className="eyebrow__line" /> A NEW RITUAL IN BROOKLYN</p>
             <h1 className="lux-hero__title" id="hero-heading" data-hero-intro>More than<br /><em>coffee.</em></h1>
@@ -156,17 +154,26 @@ export function BrewSite() {
         <section className="menu-section" id="menu" aria-labelledby="menu-heading">
           <div className="section-topline" data-reveal><span>THE HOUSE SELECTION</span><span>01 — 06 / MADE TO ORDER</span></div>
           <div className="menu-section__heading" data-reveal><div><p className="eyebrow"><span className="eyebrow__line" /> SIGNATURE MENU</p><h2 className="display-heading" id="menu-heading">A little <em>indulgence.</em></h2></div><p>Six favorites, each one a reason to slow down.</p></div>
-          <div className="menu-filters" role="group" aria-label="Filter drinks">
-            {["ALL", "HOT", "COLD"].map((filter) => <button className={activeFilter === filter ? "menu-filter is-active" : "menu-filter"} key={filter} type="button" aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter === "ALL" ? "Everything" : filter === "HOT" ? "Slow & warm" : "Over ice"}</button>)}
-          </div>
-          <div className="menu-grid" aria-live="polite">
-            {visibleDrinks.map((drink, index) => (
-              <article className="drink-card" key={drink.name} data-reveal>
-                <div className={`drink-card__art drink-card__art--${drink.family.toLowerCase()}`} aria-hidden="true"><span className="drink-card__halo" /><span className="drink-card__cup"><i /></span><span className="drink-card__number">0{drinks.indexOf(drink) + 1}</span></div>
-                <div className="drink-card__details"><div><h3>{drink.name}</h3><p>{drink.descriptor}</p></div><span className="drink-card__price">${drink.price}</span></div>
-                <span className="drink-card__index">SIGNATURE DRINK &nbsp; · &nbsp; {String(index + 1).padStart(2, "0")}</span>
-              </article>
-            ))}
+          <div className="menu-section__layout">
+            <figure className="menu-feature" data-reveal>
+              <div className="menu-feature__image"><Image src="/images/menu-drinks.png" alt="Espresso and iced coffee on a walnut café counter" fill sizes="(max-width: 700px) 100vw, 42vw" /></div>
+              <figcaption><span>ROASTED HERE. POURED FOR YOU.</span><span>WILLIAMSBURG · NYC</span></figcaption>
+            </figure>
+            <div className="menu-list">
+              <div className="menu-filters" role="group" aria-label="Filter drinks">
+                {["ALL", "HOT", "COLD"].map((filter) => <button className={activeFilter === filter ? "menu-filter is-active" : "menu-filter"} key={filter} type="button" aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter === "ALL" ? "Everything" : filter === "HOT" ? "Slow & warm" : "Over ice"}</button>)}
+              </div>
+              <div className="menu-list__items" aria-live="polite">
+                {visibleDrinks.map((drink) => (
+                  <article className="drink-row" key={drink.name} data-reveal>
+                    <span className="drink-row__number">{String(drinks.indexOf(drink) + 1).padStart(2, "0")}</span>
+                    <div className="drink-row__copy"><h3>{drink.name}</h3><p>{drink.descriptor}</p></div>
+                    <span className="drink-row__family">{drink.family}</span>
+                    <span className="drink-row__price">${drink.price}</span>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="menu-section__foot"><span>ASK US ABOUT TODAY&apos;S SINGLE ORIGIN</span><a className="inline-link" href="#visit">Come taste for yourself <span>↗</span></a></div>
         </section>
